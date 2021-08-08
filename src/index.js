@@ -2,19 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-// class Square extends React.Component {
-//     render() {
-//         return (
-//             <button
-//                 className="square"
-//                 onClick={() => this.props.onClick()}
-//             >
-//                 {this.props.value}
-//             </button>
-//         );
-//     }
-// }
-
 function Square(props) {
     return (
         <button class="square" onClick={props.onClick}>
@@ -102,9 +89,10 @@ class Game extends React.Component {
             const desc = move ?
             `Go to move #${move} ${calulateCoordinates(step.lastMove)}` :
             'Go to game start';
+            const isBold = move === this.state.stepNumber;
             return(
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button style={ isBold ? {fontWeight: 'bold'} : {fontWeight: 'normal'}} onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             )
         })
